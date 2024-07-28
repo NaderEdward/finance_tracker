@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Stats
+{% endblock %}
+
+{% block main %}
+<div class="row stats_page">
+    <h3 class="subtitle" style="color: rgb(255, 255, 255); padding-bottom: 0.5cm;"> Stats </h3>
+    <div class="column_form">
+        <div class="line_chart">
+            <canvas id="line_chart"></canvas>
+        </div>
+        <div class="expenses">
+            <h6 style="color: rgb(0, 0, 0);" class="text-center fw-bold">All Time Expenses</h6>
+            <table class="table table-light">
+                <thead>
+                <tr>
+                    <th scope="col">Net Expenses</th>
+                    <th scope="col">Money Added</th>
+                    <th scope="col">Money Spent</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    {% for expense in expenses %}
+                    <td>{{expense}}</td>
+                    {% endfor %}
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="column_form">
+        <canvas class="pie_chart" id="pie_chart"></canvas>
+    </div>
+
+</div>
+
+<!-----------------------JS-------------------------->
+<script type="text/javascript">
+// Line Chart
+let line_chart_data = {{values|tojson}};
+const line_chart = document.getElementById('line_chart');
+new Chart(line_chart, {
+    type: 'line',
+    data: {
+    labels: ['#5', '#4', '#3', '#2', '#1'],
+    datasets: [{
+        label: 'Recent Transactions Value',
+        data: line_chart_data,
+        borderWidth: 1
+    }]
+    },
+});
+
+// Pie Chart
+const pie_chart = document.getElementById('pie_chart').getContext("2d");;
+let reasons_pie = {{reasons|tojson}};
+let count = {{reason_count|tojson}};
+var chartId = new Chart(pie_chart, {
+    type: 'pie',
+    data: {
+    labels: reasons_pie,
+    datasets: [{
+        label: "Transactions by Reasons",
+        data: count,
+        hoverOffset: 5
+    }],
+    },
+    options: {
+    responsive: false,
+    },
+});
+</script>
+{% endblock %}

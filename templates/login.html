@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+<div class="form_background_login">
+    <div class="form_login">
+        <h3 class="subtitle" style="-webkit-text-fill-color: rgb(255, 255, 255);"> Login </h3>
+        <div class="row">
+            <div class="column_form">
+                <form action="/login" method="post">
+                    <label style="-webkit-text-fill-color: rgb(255, 255, 255);" for="exampleFormControlInput1" class="form-label">Email address</label>
+                    <input style="-webkit-text-fill-color: rgb(0, 0, 0); height: 1cm; width: 7cm; margin-left: .25cm; background-color: azure; border-radius: 10px;" name="email"  class="validate" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+
+                    <label style="-webkit-text-fill-color: rgb(255, 255, 255);" for="inputPassword5" class="form-label">Password</label>
+                    <input style="-webkit-text-fill-color: rgb(0, 0, 0); height: 1cm; width: 7cm; margin-left: .25cm; background-color: azure; border-radius: 10px;" class="validate" name="password" type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" placeholder="Joe123!">
+
+                    <button style="margin-left: .5cm;" class="sub_button_login" type="submit" name="action">Login</button>
+            </div>
+            </form>
+            <div class="column_form" style="text-align: center;">
+                <h4 style="-webkit-text-fill-color: rgb(255, 255, 255);">Welcome!</h4>
+                <br>
+                <p style="padding-top :10px; background-color:rgb(255, 255, 255, 0.75); border-radius: 25px; -webkit-text-fill-color: #000000;">Sign in here or register through the register link in the sidebar. For help go to the help link in the sidebar.</p>
+            </div>     
+        </div>
+    </div>
+{% endblock %}

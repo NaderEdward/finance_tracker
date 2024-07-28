@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Help
+{% endblock %}
+
+{% block main %}
+<div class="help_page">
+    <h6 style="color: rgb(255, 255, 255);" class="text-center fw-bold">Help Page</h6>
+    <div class="accordion" id="accordion">
+        <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            Log in
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordion">
+            <div class="accordion-body">
+            <strong>Log in</strong> to a preexisting account and access all the available features. Some features require the user to be logged in.
+            </div>
+        </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Register
+            </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordion">
+            <div class="accordion-body">
+            <strong>Register</strong> a new account by providing all the necessary information. The email used must be new. The currency the user provides will be used as the currency on which the program is based.
+            </div>
+        </div>
+        </div>
+        <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Balance Page
+            </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordion">
+            <div class="accordion-body">
+            The <strong>Balance Page</strong> is where the user can add money, remove money or transfer money from a specific balance in their account. The total balance and recent transactions list (showing the latest 5 transactions) are present. At the same time, transferring to another account takes in currency exchange, exchanging the money to their currency before transferring.
+            </div>
+        </div>
+        </div>
+        <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            Stats Page
+            </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordion">
+            <div class="accordion-body">
+            The <strong>Stats Page</strong> uses JavaScript's Chart.js library to visualize statistics on the user's transactions. There is a line graph showing the user's last 5 transactions, an expenses table showing the money spent, added and net value, and a pie chart showing transaction counts based on their reasons.
+            </div>
+        </div>
+        </div>
+        <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+            Recomenadtions Page
+            </button>
+        </h2>
+        <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordion">
+            <div class="accordion-body">
+            The <strong>Recomenadtions Page</strong> requires a minimum of 10 transactions before allowing the user to access it. This is not to provide users with meaningless recommendations. It utilises multiple for loops and if statements to classify the user's transactions (specifically expenses) by their reasons. If a reason makes up 30% of transaction reasons then it's classified as an urgent recommendation, if it makes up 20% of reasons it is classified as an important recommendation.
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

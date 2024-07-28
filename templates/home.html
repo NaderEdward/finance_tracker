@@ -1,1 +1,43 @@
+{% extends "layout.html" %}
 
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block main %}
+<div class="home_page">
+ <div class="row">
+    <div class="column_home">
+        <div class="card" style="width: 18rem;">
+            <img src="static/form_background.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Balance</h5>
+              <p class="card-text">View, change and update values in your and others' accounts.</p>
+              <a href="/balance" class="btn btn-primary">Balance Page</a>
+            </div>
+          </div>
+    </div>
+
+    <div class="column_home">
+        <div class="card" style="width: 18rem;">
+            <img src="static/form_background.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Stats</h5>
+              <p class="card-text">View important numbers that describe your overall financial state.</p>
+              <a href="/stats" class="btn btn-primary">Stats Page</a>
+            </div>
+          </div>
+    </div>
+
+    <div class="column_home">
+        <div class="card" style="width: 18rem;">
+            <img src="static/form_background.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Recommendations</h5>
+              <p class="card-text">Helps make smart recomendations to improve your financial state.</p>
+              <a href="/recommendations" class="btn btn-primary">Forecast Page</a>
+            </div>
+          </div>
+    </div>
+ </div>
+{% endblock %}

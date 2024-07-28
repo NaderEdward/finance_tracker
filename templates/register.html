@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<div class="form_background_register">
+    <div class="form_register">
+        <h3 class="subtitle" style="-webkit-text-fill-color: rgb(255, 255, 255);"> Register </h3>
+        <div class="row">
+            <div class="column_form">
+                <form action="/register" method="post">
+                    <label style="-webkit-text-fill-color: rgb(255, 255, 255);" for="exampleFormControlInput1" class="form-label">Email address</label>
+                    <input style="-webkit-text-fill-color: rgb(0, 0, 0); height: 1cm; width: 7cm; margin-left: .25cm; background-color: azure; border-radius: 10px;" name="email"  class="validate" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+
+                    <label style="-webkit-text-fill-color: rgb(255, 255, 255);" for="inputPassword5" class="form-label">Password</label>
+                    <input style="-webkit-text-fill-color: rgb(0, 0, 0); height: 1cm; width: 7cm; margin-left: .25cm; background-color: azure; border-radius: 10px;" class="validate" name="password" type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" placeholder="Joe123!">
+
+                    <label style="margin-top: 10px; -webkit-text-fill-color: rgb(255, 255, 255);" for="inputPassword5" class="form-label">Confirm Password</label>
+                    <input style="-webkit-text-fill-color: rgb(0, 0, 0); height: 1cm; width: 7cm; margin-left: .25cm; background-color: azure; border-radius: 10px;" name="confirmation" class="validate" type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" placeholder="Joe123!">
+
+                    <label style="margin-top: 10px; -webkit-text-fill-color: rgb(255, 255, 255);" class="form-label">Currency</label>
+                    <select id="currency" class="form-select" aria-label="Default select" style="-webkit-text-fill-color: rgb(0, 0, 0); width: 7cm; margin-left: .25cm; background-color: azure; border-radius: 10px;" name="currency" class="validate" type="text" class="form-control">
+                        {% for currency in currencies %}
+                        <option style= "-webkit-text-fill-color: black;" value="{{currency}}">{{currency}}</option>
+                        {% endfor %}
+                    </select>
+                    <button style="margin-left: .5cm;" class="sub_button_register" type="submit" name="action">Register</button>
+            </div>
+            </form>
+            <div class="column_form" style="text-align: center;">
+                <h4 style="-webkit-text-fill-color: rgb(255, 255, 255);"> Finance Tracker</h4>
+                <br>
+                <p style="padding-top :10px; background-color:rgb(255, 255, 255, 0.75); border-radius: 25px; -webkit-text-fill-color: #000000;">This finance tracker program helps users manage their personal finances by offering essential features such as expense and income tracking, financial forecasting and live statistics. Users can input and categorize their expenses, monitor income sources and see future predictions based on spending patterns.</p>
+            </div>     
+        </div>
+    </div>
+</div>
+{% endblock %}

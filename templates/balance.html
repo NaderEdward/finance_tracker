@@ -1,0 +1,142 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Balance
+{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="column_form">
+        <div class="balance-table">
+            <h5 style="-webkit-text-fill-color: black;" class="text-center fw-bold">Current Balance</h5>
+            <h4 style="-webkit-text-fill-color: black;">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</h4>
+            <table class="table table-light">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Current</th>
+                    <th scope="col">Saving</th>
+                    <th scope="col">Currency</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    {% for balance in balances %} 
+                    <th scope="row">{{balance["id"]}}</th>
+                    <td>{{balance["current"]}}</td>
+                    <td>{{balance["saving"]}}</td>
+                    <td>{{balance["currency"]}}</td>
+                    {% endfor %}
+                </tr>
+                </tbody>
+        </table>
+        <h5 style="-webkit-text-fill-color: black;" class="text-center fw-bold">Recent Transactions</h5>
+        <h4 style="-webkit-text-fill-color: black;">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</h4>
+        <table class="table table-light">
+            <thead>
+            <tr>
+                <th scope="col">Transaction ID</th>
+                <th scope="col">Value</th>
+                <th scope="col">Reason</th>
+                <th scope="col">Currency Equivalent</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <th scope="row">{{transaction["id"]}}</th>
+                <td>{{transaction["value"]}}</td>
+                <td>{{transaction["reason"]}}</td>
+                <td>{{transaction["cur_equ"]}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+    <div class="column_form">
+        <div class="balance-table">
+            <form action="/add_money" method="post">
+                <h5 style="-webkit-text-fill-color: black;" class="text-center fw-bold">Deposit</h5>
+                <h4 style="-webkit-text-fill-color: black;">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</h4>
+                <div class="row">
+                    <div class="column_four">
+                        <input style="-webkit-text-fill-color: rgb(0, 0, 0); height: 1cm; width: 5cm; background-color: azure; border-radius: 10px;" name="value" class="validate" type="real" class="form-control" placeholder="Amount: {{currency}}">
+                    </div>
+                    <div class="column_four">
+                        <select class="form-select" aria-label="Default select" style="margin-left: 1cm; -webkit-text-fill-color: rgb(0, 0, 0); width: 3cm; background-color: azure; border-radius: 10px;" name="balance" class="validate" type="text" class="form-control">
+                            <option style= "-webkit-text-fill-color: black;" selected disabled>Balance</option>
+                            <option style= "-webkit-text-fill-color: black;" value="saving">Saving</option>
+                            <option style= "-webkit-text-fill-color: black;" value="current">Current</option>
+                        </select>
+                    </div>
+                    <div class="column_four">
+                        <input style="-webkit-text-fill-color: rgb(0, 0, 0); height: 1cm; width: 4cm; background-color: azure; border-radius: 10px;" name="reason" class="validate" type="text" class="form-control" placeholder="Reason">
+                    </div>
+                    <div class="column_four">
+                        <button style="width: 3cm; height: 1cm; background-color: #9adad8; font-size: large; border-radius: 15px;" type="submit" name="action">Deposit</button>
+                    </div>
+                </div>
+            </form>
+            <form action="/remove_money" method="post">
+                <h5 style="margin-top: 0.5cm; -webkit-text-fill-color: black;" class="text-center fw-bold">Withdraw</h5>
+                <h4 style="-webkit-text-fill-color: black;">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</h4>
+                <div class="row">
+                    <div class="column_four">
+                        <input style="-webkit-text-fill-color: rgb(0, 0, 0); height: 1cm; width: 5cm; background-color: azure; border-radius: 10px;" name="value" class="validate" type="real" class="form-control" placeholder="Amount: {{currency}}">
+                    </div>
+                    <div class="column_four">
+                        <select class="form-select" aria-label="Default select" style="margin-left: 1cm; -webkit-text-fill-color: rgb(0, 0, 0); width: 3cm; background-color: azure; border-radius: 10px;" name="balance" class="validate" type="text" class="form-control">
+                            <option style= "-webkit-text-fill-color: black;" selected disabled>Balance</option>
+                            <option style= "-webkit-text-fill-color: black;" value="saving">Saving</option>
+                            <option style= "-webkit-text-fill-color: black;" value="current">Current</option>
+                        </select>
+                    </div>
+                    <div class="column_four">
+                        <input style="-webkit-text-fill-color: rgb(0, 0, 0); height: 1cm; width: 4cm; background-color: azure; border-radius: 10px;" name="reason" class="validate" type="text" class="form-control" placeholder="Reason">
+                    </div>
+                    <div class="column_four">
+                        <button style=" width: 3cm; height: 1cm; background-color: #9adad8; font-size: large; border-radius: 15px;" type="submit" name="action">Withdraw</button>
+                    </div>
+                </div>
+            </form>
+            <form action="/transfer" method="post">
+                <h5 style="margin-top: 0.5cm; -webkit-text-fill-color: black;" class="text-center fw-bold">Transfer</h5>
+                <h4 style="-webkit-text-fill-color: black;">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</h4>
+                <div class="row">
+                    <div class="column_home">
+                        <input style="-webkit-text-fill-color: rgb(0, 0, 0); height: 1cm; width: 5cm; background-color: azure; border-radius: 10px;" name="value" class="validate" type="real" class="form-control" placeholder="Amount: {{currency}}">
+                    </div>
+                    <div class="column_home">
+                        <select class="form-select" aria-label="Default select" style="-webkit-text-fill-color: rgb(0, 0, 0); width: 5cm; background-color: azure; border-radius: 10px;" name="from_balance" class="validate" type="text" class="form-control">
+                            <option style= "-webkit-text-fill-color: black;" selected disabled>Sender Balance</option>
+                            <option style= "-webkit-text-fill-color: black;" value="saving">Saving</option>
+                            <option style= "-webkit-text-fill-color: black;" value="current">Current</option>
+                        </select>
+                    </div>
+
+                    <div class="column_home">
+                        <select class="form-select" aria-label="Default select" style="-webkit-text-fill-color: rgb(0, 0, 0); width: 5cm; background-color: azure; border-radius: 10px;" name="to_balance" class="validate" type="text" class="form-control">
+                            <option style= "-webkit-text-fill-color: black;" selected disabled>Recipient Balance</option>
+                            <option style= "-webkit-text-fill-color: black;" value="saving">Saving</option>
+                            <option style= "-webkit-text-fill-color: black;" value="current">Current</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 1cm;">
+                    <div class="column_four">
+                        <input style="-webkit-text-fill-color: rgb(0, 0, 0); height: 1cm; width: 4cm; background-color: azure; border-radius: 10px;" name="reason" class="validate" type="text" class="form-control" placeholder="Reason">
+                    </div>
+                    <div class="column_four">
+                        <input style="margin-left: 0.25cm; -webkit-text-fill-color: rgb(0, 0, 0); height: 1cm; width: 3cm; background-color: azure; border-radius: 10px;" name="to_id" class="validate" type="number" class="form-control" placeholder="Recipient ID">
+                    </div>
+                    <div class="column_four">
+                        <button style="margin-left: -0.5cm; width: 3cm; height: 1cm; background-color: #9adad8; font-size: large; border-radius: 15px;" type="submit" name="action">Transfer</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
